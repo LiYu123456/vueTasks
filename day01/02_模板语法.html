@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>1. 双大括号表达式</h2>
+        <p>{{msg}}</p>
+        <p>{{msg.toUpperCase()}}</p>
+        <p v-html="msg"></p>
+        <p v-text="msg"></p>
+
+        <h2>2. 指令一、强制数据绑定</h2>
+        <img v-bind:src="imgUrl">
+        <img :src="imgUrl">
+
+        <h2>3. 指令二、绑定时间监听</h2>
+        <button v-on:click="test">testBtn</button>
+        <button @click="test">testBtn</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        const vm=new Vue({
+            el:"#app",
+            data:{
+                msg:"<a href='www.baidu.com'>I will Back!!</a>",
+                imgUrl:"https://cn.vuejs.org/images/logo.png?_sw-precache=cf23526f451784ff137f161b8fe18d5a"
+            },
+            methods:{
+                test(){
+                    alert("呵呵");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

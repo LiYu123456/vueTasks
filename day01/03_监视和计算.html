@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap">
+        姓：<input type="text" placeholder="First Name" v-model="firstName"><br>
+        名：<input type="text" placeholder="Last Name" v-model="lastName"><br>
+        姓名1（单向）：<input type="text" placeholder="Full Name1" v-model="FullName1"><br>
+        姓名2（单向）：<input type="text" placeholder="Full Name2" v-model="FullName2"><br>
+        姓名3（双向）：<input type="text" placeholder="Full Name3" v-model="FullName3"><br>
+    </div>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        const vm=new Vue({
+            el:"#wrap",
+            data:{
+                firstName:"",
+                lastName:""
+            },
+            computed:{
+                FullName1(){
+                    return this.firstName+"   "+this.lastName;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
