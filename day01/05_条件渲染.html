@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <p v-if="ok">我成功了</p>
+        <p v-else>我失败了</p>
+
+        <p v-show="ok">表白成功</p>
+        <p v-show="!ok">表白失败</p>
+
+        <button @click="update">点我</button>
+        <button @click="ok=!ok">点我</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        const vm=new Vue({
+            el:"#demo",
+            data:{
+                ok:false
+            },
+            methods:{
+                update(){
+                    this.ok=!this.ok;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

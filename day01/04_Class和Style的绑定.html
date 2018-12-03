@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .aclass{
+            color:red;
+        }
+        .bclass{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <h2>1. class绑定: :class='xxxx'</h2>
+        <p :class="'aclass'">xxxx是值字符串</p>
+        <p :class="myclass">xxxx是变量字符串</p>
+        <p :class="{aclass:isA,bclass:isB}">xxxx是对象</p>
+        <p :class="['aclass','bclass']">xxxx是数组</p>
+        <button @click="update">点我</button>
+        <h2>2. style绑定</h2>
+        <p :style="{color:activeColor,fontSize:fontsize+'px'}">style绑定</p>
+    </div>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        const vm=new Vue({
+            el:"#demo",
+            data:{
+                myclass:"aclass",
+                isA:true,
+                isB:false,
+                activeColor:"red",
+                fontsize:20
+            },
+            methods:{
+                update(){
+                    this.myclass="bclass";
+                    this.isA=false;
+                    this.isB=true;
+                    this.activeColor="green";
+                    this.fontsize="50";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
