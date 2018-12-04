@@ -24,9 +24,30 @@
             },
             computed:{
                 FullName1(){
-                    return this.firstName+"   "+this.lastName;
+                    return this.firstName+" "+this.lastName;
+                },
+                FullName3:{
+                    get(){
+                        return this.firstName+" "+this.lastName;
+                    },
+                    set(value){
+                        const names=value.split(" ");
+                        this.firstName=names[0];
+                        this.lastName=names[1];
+                    }
+                }
+            },
+            watch:{
+                firstName:function(newValue,oldValue){
+                    this.FullName1=newValue+"   "+this.lastName;
+                },
+                lastName:function(value){
+                    this.FullName2=this.firstName+"    "+value;
                 }
             }
+        });
+        vm.$watch("lastName",function(value){
+            this.FullName2=this.firstName+"     "+value;
         });
     </script>
 </body>
