@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="example">
+        <p ref="content">我出来了！！！！</p>
+        <button @click="hint">提示</button>
+        <p v-cloak>{{msg}}</p>
+    </div>
+    <div id="test1">
+        <p v-upper-text="msg1"></p>
+        <p v-upper-text="msg1"></p>
+    </div>
+    <div id="test2">
+        <p v-lower-text="msg2"></p>
+        <p v-lower-text="msg2"></p>
+    </div>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../js/moment.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        Vue.filter('dateString',function(value,format="YYYY-MM-DD HH:mm:ss"){
+            return moment(value).format(format);
+        });
+        const vm1=new Vue({
+            el:"#example",
+            data:{
+                date:new Date(),
+                msg:"Hello World!!!"
+            },
+            methods:{
+                hint(){
+                    alert(this.$refs.content.textContent);
+                }
+            }
+        });
+        //定义全局的指令
+        Vue.directive("upper-text",function(el,binding){
+            el.textContent=binding.value.toUpperCase();
+        });
+        const vm2=new Vue({
+            el:"#test1",
+            data:{
+                msg1:"Hello World!!!"
+            },
+            directives:{//定义局部指令
+                'lower-text':function(el,binding){
+                    el.textContent=binding.value.toLowerCase();
+                }
+            }
+        });
+        const vm3=new Vue({
+            el:"#test2",
+            data:{
+                msg2:"Hello World!!!"
+            }
+        });
+    </script>
+</body>
+</html>

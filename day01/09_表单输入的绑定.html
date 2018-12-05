@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <form action="" @submit.prevent="submitHandler">
+            用户名：<input type="text" v-model="userName"><br>
+            密码：<input type="password" v-model="password"><br>
+            性别：<input type="radio" id="female" value="female" v-model="gender"><label for="female">女</label>
+                 <input type="radio" id="male" value="male" v-model="gender"><label for="male">男</label>
+                 <br>
+            爱好:<input type="checkbox" id="basket" value="basket" v-model="like"><label for="basket">篮球</label>
+                <input type="checkbox" id="foot" value="foot" v-model="like"><label for="foot">足球</label>
+                <input type="checkbox" id="pingpang" value="pingpang" v-model="like"><label for="pingpang">乒乓球</label>
+            <br>
+            城市:<select v-model="city">
+                    <option value="">未选择</option>
+                    <option value="city.id" v-for="(city,index) in allCity" :key="index">
+                        {{city.value}}
+                    </option>
+                </select>
+            <br>
+            描述:<textarea v-model="desc"></textarea>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+    <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        const vm=new Vue({
+            el:"#demo",
+            data:{
+                userName:"",
+                password:"",
+                gender:"female",
+                like:["foot"],
+                allCity:[{id:"1",value:"北京"},{id:"2",value:"上海"},{id:"3",value:"深圳"}],
+                city:"",
+                desc:""
+            },
+            methods:{
+                submitHandler(){
+                    console.log(this.userName,this.password,this.gender,this.like,this.city,this.desc);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

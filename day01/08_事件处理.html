@@ -22,6 +22,9 @@
         <h3>停止事件的原来行为</h3>
         <a href="www.baidu.com" @click.prevent="test7">点我</a>
         <h2>3. 按键修饰符</h2>
+        <input  type="text" @keyup="test8">
+        <input  type="text" @keyup.13="test8">
+        <input  type="text" @keyup.enter="test8">
     </div>
     <script type="text/javascript" src="../js/vue.js" charset="UTF-8"></script>
     <script type="text/javascript">
@@ -48,6 +51,11 @@
                 },
                 test7(event){
                     alert(event.target.innerHTML);
+                },
+                test8(event){
+                    if(event.keyCode===13){
+                        alert(event.target.value);
+                    }
                 }
             }
         });
